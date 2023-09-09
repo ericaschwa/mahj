@@ -1,4 +1,5 @@
-# Represents the environment of the game, including everything about its current state
+# Represents the environment of the game, including everything about its
+# current state
 
 from bag_of_tiles import BagOfTiles
 import random
@@ -19,7 +20,7 @@ class Environment:
 		self.hands = []
 		for i in range(NUM_PLAYERS):
 			self.hands.append(BagOfTiles())
-		# First, all tiles are hidden : zero out the visible tiles and the hands
+		# First, all tiles are hidden: zero out the visible tiles and the hands
 		self.visible_tiles.zero_out()
 		for hand in self.hands:
 			hand.zero_out()
@@ -31,7 +32,8 @@ class Environment:
 		ret += f"Visible Tiles:\n{self.visible_tiles.simplified_str()}\n\n"
 		ret += f"Hiddden Tiles:\n{self.hidden_tiles.simplified_str()}\n\n"
 		for player in range(NUM_PLAYERS):
-			ret += f"Player {player}:\n{self.hands[player].simplified_str()}\n\n"
+			ret += f"Player {player}:\n"
+			ret += f"{self.hands[player].simplified_str()}\n\n"
 		return ret
 
 	def deal(self):
