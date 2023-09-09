@@ -47,6 +47,10 @@ class BagOfTiles:
 		]
 		self.update_ungrouped_bag()
 
+	def __init__(self, tiles):
+		self.bag = tiles
+		self.update_ungrouped_bag()
+
 	def __str__(self):
 		return '\n'.join([str(t) for t in self.bag])
 
@@ -63,8 +67,8 @@ class BagOfTiles:
 		self.bag[tile_id].decrement()
 		self.update_ungrouped_bag()
 
-	def simplified_str(self):
-		ret = '\n'.join([t.simplified_str() for t in self.bag if t.count > 0])
+	def simplified_str(self, delimiter='\n'):
+		ret = delimiter.join([t.simplified_str() for t in self.bag if t.count > 0])
 		if len(ret) == 0: return "Empty"
 		return ret
 
